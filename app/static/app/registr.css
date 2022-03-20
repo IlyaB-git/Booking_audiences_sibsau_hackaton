@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    background: linear-gradient(-45deg, #006CB5, #7DC71C);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0 25%;
+    }
+    25% {
+      background-position: 50% 25%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 25%;
+    }
+    100% {
+      background-position: 0 25%;
+    }
+  }
+  /* header */
+  .header{
+    width: 100%;
+    height: 65px;
+    background: #006CB5;
+    opacity: 0.3;
+  }
+  .menu a {
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+    color: #fff;
+    font-size: 32px;
+    padding: 12px;
+  
+  }
+  
+  /* forma */
+  .paper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .form {
+    width: 270px;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px #ccc;
+    font-family: "Caveat", cursive;
+    letter-spacing: 1px;
+  }
+  .form__input,
+  .form__button {
+    font-family: "Caveat", cursive;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: #fff;
+  }
+  .form__title {
+    text-align: center;
+    margin: 0 0 32px 0;
+    font-weight: normal;
+    color: #ffffffce;
+  }
+  .form__group {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .form__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    color: #ffffffce;
+    transition: 0.3s;
+  }
+  .form__input {
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #d5d4d4;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+  }
+  .form__input:focus {
+    border-bottom: 1px solid #114357;
+  }
+  .form__button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffffce;
+    background: linear-gradient(-45deg, #006CB5, #7DC71C);
+    background-size: 700% 700%;
+    animation: gradient 10s ease infinite;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .form__button:focus,
+  .form__button:hover {
+    background: linear-gradient(90deg, #006CB5, #7DC71C);
+    background-size: 700% 700%;
+    animation: gradient 10s ease infinite;
+  }
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown) ~ .form__label {
+    top: -18px;
+    font-size: 12px;
+    color: #e0e0e0;
+  }
+  

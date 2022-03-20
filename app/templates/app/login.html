@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://kit.fontawesome.com/394420c950.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <title>{{title}}</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/registr.css' %}">
+</head>
+<div class="paper">
+    <form method="post" class="form">
+        {% csrf_token %}
+        <h1 class="form__title">Авторизация</h1>
+        {{ form.non_field_errors }}
+        <div class="form__group">
+            <input class="form__input" type="text" name="username" id="name" placeholder=" ">
+            <label class="form__label">Логин</label>
+        </div>
+
+        <div class="form__group">
+            <input class="form__input" type="password" name="password" id="pass" placeholder=" ">
+            <label class="form__label">Пароль</label>
+        </div>
+        
+        <button type="submit" class="form__button">Войти</button>
+        <a href="\"><button type="button" class="form__button">назад</button></a>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+
+{% for auditor in auditors %}
+<div class="auditor">
+    
+    <div style="border: {{task.category.color}} solid 2px;">   
+        <h2>{{auditor.name}}</h2>
+        <p>Столы {{auditor.tables}}</p>
+        <p>Места {{auditor.chairs}}</p>
+        <p>Микрофоны {{auditor.microphones}}</p>
+        <p>Колонки {{auditor.speakers}}</p>
+        <p>Компьютеры {{auditor.computers}}</p>
+        <p>Проектор {{auditor.proektor}}</p>
+        <p>Корпус {{auditor.corpus}}</p>
+        {% if broned %}
+            {{auditor.tables}}
+        {% endif %}
+        
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,35 @@
+main page
+
+{% if request.user.is_authenticated %}
+вход выполнен
+{% else %}
+войдите
+{% endif %}
+
+<br>
+{% load app_tags %}
+<a href="/admin/">ADMIN</a>
+<a href="/login/">Login</a>
+<a href="/logout/">Выйти</a>
+<a href="/auditors/">аудитории</a>
+<a href="/date/">дата</a>
+<br><br>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="type" value="search_date">
+    <input type="date" name="date" id="">
+    <input type="submit">
+</form>
+<br>{{user.first_name}} {{user.last_name}}<br>
+
+
+
+{% if request.user.is_authenticated %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" id="">
+</form>
+{% endif %}
+
+

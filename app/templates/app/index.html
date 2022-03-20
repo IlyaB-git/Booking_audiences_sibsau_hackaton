@@ -1,0 +1,293 @@
+{% extends 'app/base.html' %}
+{% load app_tags %}
+
+
+
+{% block content %}
+
+    <header class="header">
+    <nav>
+        <div class="cleva">
+            <div class="form__gorod">     
+                <p class="gorod"><i class="fas fa-city"></i></p><p class="label__gorod"> Город:</p>
+                  <select class="select__gorod" id="selectvalue">
+           <option>Красноярск</option>
+           <option>Зеленогорск</option> 
+           </select></div>
+        </div>
+        <div class="menu">
+        {% if request.user.is_authenticated %}
+       
+            <a href="/logout/"><button  class="form__button2"><i class="fas fa-door-open"></i> Выйти</button></a>
+        {% else %}
+        <a href="/login/"><button  class="form__button2">Войти</button></a>
+        {% endif %}
+        <h2 class="name">{{user.first_name}} {{user.last_name}}</h2>
+         
+        <a class="admin" href="/admin/"><i class="fas fa-user-cog"></i></a>
+    </div>
+    </nav>
+</header>
+
+<div class="paper">
+    <form method="post" class="form">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="search_date">
+        <h1 class="form__title">Бронирование аудиторий </h1>
+        <div class="biborka">
+<div class="colym">
+    
+        <div class="form__group">     
+       <i class="fas fa-building"></i><p class="form__label">Корпус:</p>
+       <select class="select" id="selectvalue" name="corpus">
+        <option value="0">--все--</option>
+{% for c in corpusies %}
+<option value="{{c.pk}}">{{c}}</option>
+{% endfor %}
+</select>
+        </div>
+
+<div class="form__group">
+    <p class="form__label2">Дата:</p>
+    {{form.date}}
+</div>
+
+<div class="form__group">
+<i class="fas fa-hourglass-half"></i><p class="form__label">Время c </p>
+<select class="select_time" id="selectvalue">
+<option>8</option>
+<option>9</option> 
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>00</option>
+</select>
+<p class="form__label3">до</p>
+<select class="select_time2" id="selectvalue">
+<option>8</option>
+<option>9</option> 
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>00</option>
+</select>
+</div>
+</div>
+
+<div class="colym2" >
+
+    <div class="form__group"> 
+        <p><i class="fas fa-child"></i></p>
+        <p class="form__label">Места: </p> 
+        <input name="places" class="cvl" type="range" step="5" min="1" max="100" list="rangeList1" onchange="document.getElementById('rangeValue1').innerHTML = this.value;">
+    <datalist id="rangeList1">
+    <option value="0" label="0">
+    <option value="25" label="25">
+    <option value="50" label="50">
+    <option value="75" label="75">
+    </datalist>
+    <span class="cvl" id="rangeValue1">50</span>
+    </div>
+
+<div class="form__group3"> 
+    <p><i class="fas fa-hockey-puck"></i></p>
+    <p class="form__label">Столы:</p> 
+    <input name="tables" class="cvl2" type="range" step="3" min="0" max="15" list="rangeList2" onchange="document.getElementById('rangeValue2').innerHTML = this.value;">
+<datalist id="rangeList2">
+<option value="0" label="0">
+<option value="5" label="5">
+<option value="10" label="10">
+<option value="15" label="15">
+</datalist>
+<span class="cvl2" id="rangeValue2">5</span>
+</div>
+
+<div class="form__group4"> 
+    <p><i class="fas fa-desktop"></i></p>
+    <p class="form__label">Компьютеры:</p> 
+    <input name="computers" class="cvl3" type="range" step="1" min="0" max="10" list="rangeList3" onchange="document.getElementById('rangeValue3').innerHTML = this.value;">
+<datalist id="rangeList3">
+        <option value="0" label="0">
+        <option value="4" label="4">
+        <option value="7" label="7">
+        <option value="10" label="10">
+        </datalist>
+<span class="cvl3" id="rangeValue3">5</span>
+</div>
+</div>
+
+<div class="colym3">
+<div class="form__group"> 
+    <p><i class="fas fa-chalkboard"></i></p>
+    <p class="form__label4">Интерактивная доска:</p> 
+    <input class="galka" type="checkbox" name="interactive">
+</div>
+
+<div class="form__group"> 
+    <i class="fas fa-band-aid"></i>
+    <p class="form__label4">Проектор:</p> 
+    <input class="galka3" type="checkbox" name="proektor">
+</div>
+
+<div class="form__group"> 
+    <i class="fas fa-microphone-alt"></i>
+    <p class="form__label">Микрофон:</p> 
+    <input class="galka2" type="checkbox" name="micro">
+</div>
+
+<div class="form__group"> 
+    <i class="fas fa-microphone-alt"></i>
+    <p class="form__label">Колонки:</p> 
+    <input class="galka2" type="checkbox" name="speakers">
+</div>
+</div>
+</div>
+
+
+<a class="form__button" href="/"><i class="fas fa-trash-alt"></i> Очистить</a>
+        <button type="submit" align="center" class="form__button"><i class="fas fa-sort-amount-down-alt"></i> Применить</button>
+    
+    </form>
+    
+    
+    <form method="post" class="forms">
+         <h2 class="form__title">По вашему запросу найдены {{count}} аудиторий:</h2>
+      <div class="aydits">
+        
+    
+
+    {% for auditor in auditors %}
+    
+        <form method="post">
+            <div class="aydit"> 
+            {% csrf_token %}
+            {% if date %}
+            <input type="hidden" name="type" value="send">
+            <input type="hidden" name="auditor" value="{{auditor.pk}}">
+            <input type="hidden" name="date" value="{{date}}">
+            <input type="hidden" name="user" value="{{user.first_name}} {{user.last_name}} ({{user}})">
+            <h2>{{auditor.name}}</h2>
+            {% if user.is_authenticated %}
+            {% for br in bron %}
+                        {% if br.auditor == auditor %}
+                        <i class="fas fa-exclamation znak"></i>
+                        {% endif %}
+                    {% endfor %}{% endif %}
+            <p>Корпус: {{auditor.corpus}}</p>
+                <p>Места: {{auditor.places}}</p>
+                <p>Компьютеры: {{auditor.computers}}</p>
+                <p>Проектор - {% if auditor.proektor %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Интерактивная доска {% if auditor.interactiveBoard %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Микрофоны - {% if auditor.microphones %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Колонки - {% if auditor.speakers %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                
+                
+                {% if user.is_authenticated %}
+                <div class="form__group">
+                    <p class="deq">
+                    
+                    
+                        </p>
+                    <p class="form__labelw">Время c </p>
+                    <select class="select_time" id="selectvalue" name="start_time">
+                    <option value="8">8</option>
+                    <option value="9">9</option> 
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    </select>
+                    <p class="form__label3s">до</p>
+                    <select class="select_time2" id="selectvalue" name="end_time">
+                    <option value="8">8</option>
+                    <option value="9">9</option> 
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    </select>
+                    </div>
+                    <div class="form__group">     
+                        <p class="deq"><i class="far fa-envelope"></i><p class="form__labelw">Цель:</p></p>
+                    <textarea class="rea" id="story" name="story"
+                              rows="5" cols="25" placeholder="Хочу организовать крутую движуху!" ></textarea>
+                    </div>
+                    <input type="submit" class="form__button3">
+                    <p class="info">
+                       
+                    {% endif %}
+                
+                    {% for br in bron %}
+                    {% if br.auditor == auditor %}
+                    Занята пользователем {{br.user}}  c 
+                    {{br.start_time}} до {{br.end_time}}
+                    {% endif %}
+                {% endfor %}</p>
+                
+                {% else %}
+                <h2 class="audit__">{{auditor.name}}</h2>
+                <p>Корпус {{auditor.corpus}}</p>
+                <p>Места {{auditor.places}}</p>
+                <p>Компьютеры {{auditor.computers}}</p>
+                <p>Проектор {% if auditor.proektor %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Интерактивная доска {% if auditor.interactiveBoard %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Микрофоны {% if auditor.microphones %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                <p>Колонки {% if auditor.speakers %}ЕСТЬ{% else %}НЕТ{% endif %}</p>
+                {% endif %}
+            </div>
+        </form>
+    
+        
+    {% endfor %}
+</div> 
+
+
+    </form>
+    </div> 
+    <footer class="footer"></footer>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block menu %}
+{% for auditor in auditors %}
+<div class="auditor">
+    
+    <div style="border: {{task.category.color}} solid 2px;">   
+        <h2>{{auditor.auditor.name}}</h2>
+        <p>Столы {{auditor.auditor.tables}}</p>
+        <p>Места {{auditor.auditor.chairs}}</p>
+        <p>Микрофоны {{auditor.auditor.microphones}}</p>
+        <p>Колонки {{auditor.auditor.speakers}}</p>
+        <p>Компьютеры {{auditor.auditor.computers}}</p>
+        <p>Проектор {{auditor.auditor.proektor}}</p>
+        <p>Корпус {{auditor.auditor.corpus}}</p>
+    
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

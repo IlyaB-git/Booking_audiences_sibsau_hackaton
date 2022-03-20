@@ -1,0 +1,13 @@
+<header class="header">
+    <nav class="menu">
+        <a href="#"><i class="fas fa-bars"></i></a>
+
+    </nav>
+</header>
+{{#if model.length}}
+{{#each model}}
+<h1>{{name}}</h1>
+<h5>{{mail}}</h5>
+{{/each}}
+{{/if}}
+
